@@ -4,7 +4,8 @@
 #include <string>
 #include <vector>
 
-struct TradeRecord {
+struct TradeRecord
+{
     std::string date;
     std::string symbol;
     std::string side;
@@ -14,10 +15,11 @@ struct TradeRecord {
     int position_after{};
 };
 
-class TradeLog {
+class TradeLog
+{
 public:
     void add(TradeRecord trade);
-    void write_csv(const std::string& filename) const;
+    void write_csv(const std::string &filename) const;
 
     [[nodiscard]] std::size_t size() const;
 

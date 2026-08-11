@@ -4,15 +4,17 @@
 #include <string>
 #include <vector>
 
-struct EquityPoint {
+struct EquityPoint
+{
     std::string date;
     double net_asset_value{};
 };
 
-class Performance {
+class Performance
+{
 public:
-    void record(const std::string& date, double net_asset_value);
-    void write_equity_curve_csv(const std::string& filename) const;
+    void record(const std::string &date, double net_asset_value);
+    void write_equity_curve_csv(const std::string &filename) const;
 
     [[nodiscard]] double total_return() const;
     [[nodiscard]] double annualized_sharpe_ratio() const;

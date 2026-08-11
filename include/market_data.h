@@ -3,7 +3,8 @@
 #include <string>
 
 // A single daily bar read from a CSV file.
-struct MarketBar {
+struct MarketBar
+{
     std::string date;
     double close{};
 };

@@ -9,13 +9,16 @@
 #include <iostream>
 #include <map>
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
         std::cerr << "Usage: quant <market_data.csv>\n";
         return 1;
     }
 
-    try {
+    try
+    {
         const CsvDataFeed data_feed;
         const auto bars = data_feed.load(argv[1]);
 
@@ -32,14 +35,15 @@ int main(int argc, char* argv[]) {
         Performance performance;
         std::map<std::string, double> latest_prices;
 
-        for (const auto& bar : bars) {
+        for (const auto &bar : bars)
+        {
             latest_prices[symbol] = bar.close;
             strategy.on_bar(bar, portfolio, trade_log, symbol);
             performance.record(bar.date, portfolio.net_asset_value(latest_prices));
         }
 
-        constexpr const char* trade_log_file = "trades.csv";
-        constexpr const char* equity_curve_file = "equity_curve.csv";
+        constexpr const char *trade_log_file = "trades.csv";
+        constexpr const char *equity_curve_file = "equity_curve.csv";
         trade_log.write_csv(trade_log_file);
         performance.write_equity_curve_csv(equity_curve_file);
 
@@ -54,7 +58,9 @@ int main(int argc, char* argv[]) {
                   << ")\n";
         std::cout << "Equity curve: " << performance.observations() << " points (saved to "
                   << equity_curve_file << ")\n";
-    } catch (const std::exception& error) {
+    }
+    catch (const std::exception &error)
+    {
         std::cerr << "Error: " << error.what() << '\n';
         return 1;
     }

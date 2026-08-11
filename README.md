@@ -144,13 +144,6 @@ date,net_asset_value
 2020-01-03,10000000.00
 ```
 
-## Strategy Logic
-
-The default strategy uses a 5-day and 20-day simple moving average (SMA):
-
-- **Golden cross**: the short SMA crosses above the long SMA; buy the maximum affordable number of shares, rounded down to 100-share A-share lots.
-- **Death cross**: the short SMA crosses below the long SMA; sell the entire position.
-
 ## Performance Metrics
 
 - **Total Return**: `(final NAV / initial NAV) - 1`
